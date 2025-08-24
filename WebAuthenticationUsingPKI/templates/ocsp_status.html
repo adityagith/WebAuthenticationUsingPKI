@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OCSP Checker</title>
+</head>
+<body>
+    <h2>Check Certificate Status</h2>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Enter username" required>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if status is not none %}
+        <p>Status: <strong>{{ status }}</strong></p>
+    {% endif %}
+
+    <a href="/">Back to Home</a>
+</body>
+</html>

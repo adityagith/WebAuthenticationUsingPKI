@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+
+    <h2>Pending Certificate Requests</h2>
+    <ul>
+        {% for username in pending %}
+            <li>{{ username }} -
+                <a href="/admin/approve/{{ username }}">Approve</a>
+            </li>
+        {% else %}
+            <li>No pending requests.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Issued Certificates</h2>
+    <ul>
+        {% for username, info in issued.items() %}
+            <li>{{ username }} - Status: {{ "Revoked" if info.revoked else "Valid" }}
+                <a href="/admin/revoke/{{ username }}">Revoke</a>
+            </li>
+        {% else %}
+            <li>No issued certificates.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
